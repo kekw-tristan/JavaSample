@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: DaddelDiscussion
+      MYSQL_DATABASE: javaprojekt
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
