@@ -6,17 +6,17 @@ public class Logic
 {
     private DatabaseConnection db;
 
-    private String host = "mariadb";
+    private String host = "localhost";
     private String database = "javaprojekt";
     private int port = 3306;
     private String username = "user";
     private String password = "password";
 
-    String url = buildUrl("mariadb", host, port, database);
+    String url = buildUrl(host, port, database);
 
     public void init()
     {
-
+        ConnectDatabase();
     }
 
     public void run()
@@ -31,21 +31,20 @@ public class Logic
 
     private void ConnectDatabase()
     {
+
         db = DatabaseConnection.getInstance();
         db.connectToDatabase(url, username, password);
     }
 
-    private String buildUrl(String connectorName, String host, int port, String database) {
-        return new StringBuilder()
-                .append("jdbc:")
-                .append(connectorName)
-                .append("://")
-                .append(host)
-                .append(":")
-                .append(port)
-                .append("/")
-                .append(database)
-                .toString();
+    private String buildUrl(String host, int port, String database) {
+        return "jdbc:" +
+                "mariadb" +
+                "://" +
+                host +
+                ":" +
+                port +
+                "/" +
+                database;
     }
 
 }

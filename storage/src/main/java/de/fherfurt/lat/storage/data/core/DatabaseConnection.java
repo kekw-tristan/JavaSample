@@ -24,11 +24,19 @@ public class DatabaseConnection
 
         try
         {
+            Class.forName("org.mariadb.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            System.out.println("connected to Database");
 
             return true;
         }
         catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        catch (ClassNotFoundException e)
         {
             e.printStackTrace();
             return false;
@@ -40,6 +48,7 @@ public class DatabaseConnection
         try
         {
             connection.close();
+            System.out.println("Database Closed");
             return true;
         }
         catch (SQLException e)
