@@ -11,8 +11,6 @@ services:
       MYSQL_PASSWORD: password
     ports:
     - "3306:3306"
-    volumes:
-    - ./db/init_mariadb.sql:/docker-entrypoint-initdb.d/init_mariadb.sql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

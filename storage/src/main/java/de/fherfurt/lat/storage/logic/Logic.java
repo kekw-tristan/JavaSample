@@ -1,6 +1,11 @@
 package de.fherfurt.lat.storage.logic;
 
 import de.fherfurt.lat.storage.data.core.DatabaseConnection;
+import de.fherfurt.lat.storage.models.Address;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class Logic
 {
@@ -11,6 +16,14 @@ public class Logic
     public void init()
     {
         ConnectDatabase();
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("lat-unit");
+        EntityManager entityManager = factory.createEntityManager();
+
+        Address a = new Address(14, "shit street", "99869", "G-Town", "Germany");
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(a);
+        entityManager.getTransaction().commit();
     }
 
     public void run()

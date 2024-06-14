@@ -1,7 +1,8 @@
 package de.fherfurt.lat.storage.data.core;
 
-import lombok.*;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,26 +10,27 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 @Inheritance( strategy =  InheritanceType.TABLE_PER_CLASS )
-public class AbstractDatabaseEntitiy
-{
+public abstract class AbstractDatabaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    protected int id;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    protected Date created;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modified;
+    protected Date modified;
 
     @PrePersist
-    public void onCreate() {
+    public void onCreate()
+    {
         this.created = new Date();
         this.modified = new Date();
     }
 
     @PreUpdate
-    public void onUpdate() {
+    public void onUpdate()
+    {
         this.modified = new Date();
     }
-
 }
