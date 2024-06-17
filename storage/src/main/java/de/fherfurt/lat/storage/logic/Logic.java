@@ -19,10 +19,19 @@ public class Logic
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("lat-unit");
         EntityManager entityManager = factory.createEntityManager();
 
-        Address a = new Address(14, "shit street", "99869", "G-Town", "Germany");
+        Address a = new Address(14, "street1", "99869", "Erfurt", "Germany");
+        Address b = new Address(14, "street2", "99869", "Erfurt", "Germany");
+        Address c = new Address(14, "street3", "99869", "Erfurt", "Germany");
 
         entityManager.getTransaction().begin();
         entityManager.persist(a);
+
+        entityManager.getTransaction().commit();
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(a);
+        entityManager.persist(b);
+        entityManager.persist(c);
         entityManager.getTransaction().commit();
     }
 
