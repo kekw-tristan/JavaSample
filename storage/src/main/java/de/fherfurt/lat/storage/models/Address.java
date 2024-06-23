@@ -11,7 +11,8 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "addresses")
-public class Address extends AbstractDatabaseEntity {
+public class Address extends AbstractDatabaseEntity
+{
     private int houseNumber;
     private String street;
     private String postalCode;

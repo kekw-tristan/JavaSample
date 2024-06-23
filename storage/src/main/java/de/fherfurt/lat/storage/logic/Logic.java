@@ -1,7 +1,9 @@
 package de.fherfurt.lat.storage.logic;
 
 import de.fherfurt.lat.storage.data.core.DatabaseConnection;
+import de.fherfurt.lat.storage.data.daos.JpaAddressDao;
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.Studio;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,21 +20,16 @@ public class Logic
         ConnectDatabase();
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("lat-unit");
         EntityManager entityManager = factory.createEntityManager();
+        JpaAddressDao addressDao = new JpaAddressDao(entityManager);
 
-        Address a = new Address(14, "street1", "99869", "Erfurt", "Germany");
-        Address b = new Address(14, "street2", "99869", "Erfurt", "Germany");
-        Address c = new Address(14, "street3", "99869", "Erfurt", "Germany");
+        Address a = new Address(12, "41", "5", "2", "3");
+        Address b = new Address(14, "123", "45", "345", "234");
+        Address c = new Address(14, "123", "123", "123", "123");
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(a);
+        addressDao.create(a);
+        addressDao.create(b);
+        addressDao.create(c);
 
-        entityManager.getTransaction().commit();
-
-        entityManager.getTransaction().begin();
-        entityManager.persist(a);
-        entityManager.persist(b);
-        entityManager.persist(c);
-        entityManager.getTransaction().commit();
     }
 
     public void run()
