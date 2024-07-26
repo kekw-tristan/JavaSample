@@ -4,6 +4,8 @@ import de.fherfurt.lat.api.resources.BaseResource;
 import org.eclipse.jetty.server.Server;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 
@@ -21,10 +23,9 @@ public class WebApplication {
 
         config.register(BaseResource.class);
 
-        config.register(BasicAuthFilter.class);
+        // ?? was ist mit dem Authenticator config.register(BasicAuthFilter.class);
 
-        Server server =
-                JettyHttpContainerFactory.createServer(URI.create( BASE_URI ), config);
+        Server server = JettyHttpContainerFactory.createServer(URI.create( BASE_URI ), config);
 
         return server;
     }
