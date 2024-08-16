@@ -10,13 +10,9 @@ public interface IAddressService {
 
     List<Address> getAllAddresses();
 
-    List<Address> getAllAddresses(Studio studio);
-
     Optional<Address> getAddressById(int addressId);
 
     boolean addAddress(Address address);
-
-    boolean updateAddress(Address address);
 
     boolean deleteAddress(int addressId);
 }
