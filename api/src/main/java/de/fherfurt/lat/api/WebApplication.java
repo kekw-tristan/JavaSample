@@ -36,6 +36,7 @@ public class WebApplication {
      */
     public static void main(String[] args) {
         Logger LOG = LoggerFactory.getLogger( WebApplication.class );
+        System.out.println( "test" );
 
         try {
             final Server server = startServer();

@@ -24,3 +24,15 @@ services:
       - "5051:80"
     depends_on:
       - mariadb
+
+
+  lat:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      RUN_MODE: PRODUCTION
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
