@@ -9,15 +9,15 @@ public class BaseResource {
 
     @GET
     @PermitAll
-    public String info()
-    {
+    public String info() {
         return "Working";
     }
-    
+
     @Path("/address")
-    public AddressResource getAddressRessource()
-    {
+    public AddressResource getAddressRessource() {
         return new AddressResource();
     }
 
+    @Path("/Studio")
+    public StudioRessource getStudioRessource() { return new StudioRessource(); }
 }

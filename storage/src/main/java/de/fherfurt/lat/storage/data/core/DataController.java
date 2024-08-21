@@ -4,8 +4,10 @@ import de.fherfurt.lat.storage.data.daos.IGenericDao;
 import de.fherfurt.lat.storage.data.daos.JpaGenericDao;
 import de.fherfurt.lat.storage.data.repositories.AddressRepository;
 import de.fherfurt.lat.storage.data.repositories.IAddressRepository;
-
+import de.fherfurt.lat.storage.data.repositories.StudioRepository;
+import de.fherfurt.lat.storage.data.repositories.IStudioRepository;
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.Studio;
 import lombok.Getter;
 
 import javax.persistence.EntityManagerFactory;
@@ -23,6 +25,9 @@ public class DataController {
 
     @Getter
     private final IAddressRepository addressRepository;
+
+    @Getter
+    private final IStudioRepository studioRepository;
 
     private static DataController INSTANCE;
 
@@ -53,11 +58,19 @@ public class DataController {
         // Create Repository
         LOGGER.info( "Create RepositoryImpl" );
         this.addressRepository = new AddressRepository( this.getAddressDao() );
+        this.studioRepository = new StudioRepository( this.getStudioDao() );
     }
 
     public IGenericDao<Address> getAddressDao() {
         return new JpaGenericDao<>(
                 Address.class,
+                this.entityManagerFactory.createEntityManager()
+        );
+    }
+
+    public IGenericDao<Studio> getStudioDao() {
+        return new JpaGenericDao<>(
+                Studio.class,
                 this.entityManagerFactory.createEntityManager()
         );
     }
