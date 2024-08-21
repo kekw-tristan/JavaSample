@@ -19,5 +19,5 @@ public class BaseResource {
     }
 
     @Path("/Studio")
-    public StudioRessource getStudioRessource() { return new StudioRessource(); }
+    public StudioResource getStudioRessource() { return new StudioResource(); }
 }

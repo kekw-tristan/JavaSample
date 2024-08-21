@@ -10,7 +10,7 @@ public interface IStudioService {
 
     List<Studio> getAllStudios();
 
-    List<Studio> getStudiosByAddress(Address address);
+    // List<Studio> getStudiosByAddress(Address address);
 
     Optional<Studio> getStudioById(int studioId);
 

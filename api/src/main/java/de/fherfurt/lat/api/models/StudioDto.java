@@ -14,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudioDto {
+    private int id;
     private double prizePerDay;
     private Address address;
 }

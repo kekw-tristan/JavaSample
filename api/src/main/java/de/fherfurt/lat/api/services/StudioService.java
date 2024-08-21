@@ -28,10 +28,11 @@ public class StudioService implements IStudioService {
         return studioRepository.getAllStudios();
     }
 
+    /*
     @Override
     public List<Studio> getStudiosByAddress(Address address) {
 
-    }
+    }*/
 
     @Override
     public Optional<Studio> getStudioById(int studioId) {
@@ -40,11 +41,11 @@ public class StudioService implements IStudioService {
 
     @Override
     public boolean addStudio(Studio studio) {
-
+        return false;
     }
 
     @Override
     public boolean deleteStudio(int studioId) {
-
+        return false;
     }
 }
