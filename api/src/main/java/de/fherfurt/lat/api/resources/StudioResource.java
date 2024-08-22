@@ -2,11 +2,8 @@ package de.fherfurt.lat.api.resources;
 
 import de.fherfurt.lat.api.mapping.Mapper;
 import de.fherfurt.lat.api.models.StudioDto;
-import de.fherfurt.lat.api.services.AddressService;
-import de.fherfurt.lat.api.services.IAddressService;
 import de.fherfurt.lat.api.services.StudioService;
 import de.fherfurt.lat.api.services.IStudioService;
-import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.Studio;
 
 import javax.ws.rs.GET;
