@@ -84,6 +84,7 @@ public class StudioResource {
 
     }
 
+    /*
     @PUT
     @Path("{studioId:\\d+}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -92,8 +93,6 @@ public class StudioResource {
             @PathParam("studioId") int studioId
     ) {
 
-
-        /*
         Studio studioUpdates = null;
         try {
             studioUpdates = Mapper.newPersonDtoToPerson(personToUpdate, owner.get());
@@ -116,8 +115,8 @@ public class StudioResource {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .build();
-        }*/
-    }
+        }
+    }*/
 
     @DELETE
     @Path("{studioId:\\d+}")
