@@ -13,11 +13,11 @@ import java.util.Objects;
 @Entity(name = "addresses")
 public class Address extends AbstractDatabaseEntity
 {
-    private int houseNumber;
-    private String street;
-    private String postalCode;
-    private String city;
-    private String country;
+    private int     houseNumber;
+    private String  street;
+    private String  postalCode;
+    private String  city;
+    private String  country;
 
 
     public Address(int houseNumber, String street, String postalCode, String city, String country)
@@ -27,6 +27,11 @@ public class Address extends AbstractDatabaseEntity
         this.postalCode = postalCode;
         this.city = city;
         this.country = country;
+    }
+
+
+    public static Address create(int houseNumber, String street, String postalCode, String city, String country) {
+        return new Address(houseNumber, street, postalCode, city, country);
     }
 
     @Override
@@ -49,5 +54,16 @@ public class Address extends AbstractDatabaseEntity
     {
         return String.format("%d %s, %s %s (%s)", houseNumber, street, postalCode, city, country);
     }
+
+    public int getHouseNumber() { return houseNumber; }
+    public void setHouseNumber(int houseNumber) { this.houseNumber = houseNumber; }
+    public String getStreet() { return street; }
+    public void setStreet(String street) { this.street = street; }
+    public String getPostalCode() { return postalCode; }
+    public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
 
 }

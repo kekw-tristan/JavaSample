@@ -30,16 +30,16 @@ public class AddressService implements IAddressService{
 
     @Override
     public Optional<Address> getAddressById(int addressId) {
-        return Optional.empty();
+        return Optional.ofNullable(addressRepository.getAddress(addressId));
     }
 
     @Override
     public boolean addAddress(Address address) {
-        return false;
+        return addressRepository.createAddress(address);
     }
 
     @Override
     public boolean deleteAddress(int addressId) {
-        return false;
+        return addressRepository.deleteAddress(addressId);
     }
 }

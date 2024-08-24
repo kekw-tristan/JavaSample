@@ -53,7 +53,7 @@ public class Logic
 
         db = DatabaseConnection.getInstance();
 
-        db.connectToDatabase(url, username, password);
+        db.connectToDatabase();
 
     }
 }
