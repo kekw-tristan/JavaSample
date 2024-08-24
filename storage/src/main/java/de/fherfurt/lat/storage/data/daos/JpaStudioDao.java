@@ -1,5 +1,6 @@
 package de.fherfurt.lat.storage.data.daos;
 
+import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.Studio;
 
 import javax.persistence.EntityManager;
@@ -16,5 +17,10 @@ public class JpaStudioDao extends JpaGenericDao<Studio> implements IStudioDao
     @Override
     public int GetIdByStudio(Studio studio) {
         return 0;
+    }
+
+    @Override
+    public List<Studio> findWithAddress(Address address) {
+        return null;
     }
 }

@@ -10,11 +10,14 @@ public interface IStudioService {
 
     List<Studio> getAllStudios();
 
-    // List<Studio> getStudiosByAddress(Address address);
+    List<Studio> getStudiosByAddress(int addressId);
+    List<Studio> getStudiosByAddress(Address address);
 
     Optional<Studio> getStudioById(int studioId);
 
     boolean addStudio(Studio studio);
+
+    boolean updateStudio(Studio studio);
 
     boolean deleteStudio(int studioId);
 }

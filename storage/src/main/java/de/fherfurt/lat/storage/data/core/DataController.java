@@ -1,7 +1,9 @@
 package de.fherfurt.lat.storage.data.core;
 
 import de.fherfurt.lat.storage.data.daos.IGenericDao;
+import de.fherfurt.lat.storage.data.daos.IStudioDao;
 import de.fherfurt.lat.storage.data.daos.JpaGenericDao;
+import de.fherfurt.lat.storage.data.daos.JpaStudioDao;
 import de.fherfurt.lat.storage.data.repositories.AddressRepository;
 import de.fherfurt.lat.storage.data.repositories.IAddressRepository;
 import de.fherfurt.lat.storage.data.repositories.StudioRepository;
@@ -58,7 +60,7 @@ public class DataController {
         // Create Repository
         LOGGER.info( "Create RepositoryImpl" );
         this.addressRepository = new AddressRepository( this.getAddressDao() );
-        this.studioRepository = new StudioRepository( this.getStudioDao() );
+        this.studioRepository = new StudioRepository( this.getStudioDao(), this.getAddressDao());
     }
 
     public IGenericDao<Address> getAddressDao() {
@@ -68,11 +70,8 @@ public class DataController {
         );
     }
 
-    public IGenericDao<Studio> getStudioDao() {
-        return new JpaGenericDao<>(
-                Studio.class,
-                this.entityManagerFactory.createEntityManager()
-        );
+    public IStudioDao getStudioDao() {
+        return new JpaStudioDao( this.entityManagerFactory.createEntityManager());
     }
 
 }

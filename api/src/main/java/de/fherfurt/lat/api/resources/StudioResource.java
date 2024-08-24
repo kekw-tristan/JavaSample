@@ -5,25 +5,23 @@ import de.fherfurt.lat.api.models.StudioDto;
 import de.fherfurt.lat.api.services.StudioService;
 import de.fherfurt.lat.api.services.IStudioService;
 import de.fherfurt.lat.storage.models.Studio;
+import de.fherfurt.lat.api.models.NewStudioDto;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Path;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 
 public class StudioResource {
-    private final IStudioService studioService;
-
     public StudioResource() { this.studioService = new StudioService(); }
 
     @GET
     @Path("{studioId:\\d+}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAddress(@PathParam("studioId") int studioId) {
+    public Response getStudio(@PathParam("studioId") int studioId) {
         Optional<Studio> studio = this.studioService.getStudioById((studioId));
 
         if (studio.isPresent()) {
@@ -33,6 +31,113 @@ public class StudioResource {
         } else {
             return Response
                     .status(Response.Status.NOT_FOUND)
+                    .build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StudioDto> getStudios() {
+        return this.studioService
+                .getAllStudios()
+                .stream()
+                .map(Mapper::studioToDto)
+                .toList();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StudioDto> getStudiosByAddress(int addressId) {
+        // Je nachdem wie addressId übergeben wird dann noch if statement das leere Liste wiedergibt
+        // wenn es kein addresse gibt mit der id oder so
+
+        return this.studioService
+                .getStudiosByAddress(addressId)
+                .stream()
+                .map(Mapper::studioToDto)
+                .toList();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createStudio(
+            NewStudioDto personToCreate
+    ) {
+        Studio newStudio = null;
+
+        try {
+            newStudio = Mapper.newPersonDtoToPerson(personToCreate, owner.get());
+        } catch (MappingException me) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(new ErrorDto(me.getMessage()))
+                    .build();
+        }
+
+        boolean success = this.studioService.addStudio( newStudio );
+
+        if( success ) {
+            return Response
+                    .status(Response.Status.CREATED)
+                    .entity(Mapper.studioToDto(newStudio))
+                    .build();
+        } else {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .build();
+        }
+    }
+
+    @PUT
+    @Path("{studioId:\\d+}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateStudio(
+            NewStudioDto studioToUpdate,
+            @PathParam("studioId") int studioId
+    ) {
+        Studio studioUpdates = null;
+
+        try {
+            studioUpdates = Mapper.newPersonDtoToPerson(personToUpdate, owner.get());
+        } catch (MappingException me) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(me.getMessage())
+                    .build();
+        }
+
+        studioUpdates.setId(studioId);
+
+        boolean success = this.studioService.updateStudio( studioUpdates );
+
+        if( success ) {
+            return Response
+                    .ok(Mapper.studioToDto(studioUpdates))
+                    .build();
+        } else {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .build();
+        }
+    }
+
+    @DELETE
+    @Path("{studioId:\\d+}")
+    public Response deleteStudio(
+            @PathParam("studioId") int studioId
+    ) {
+        boolean success = this.studioService.deleteStudio( studioId );
+
+        if( success ) {
+            return Response
+                    .ok()
+                    .build();
+        }
+        else {
+            return Response
+                    .status( Response.Status.NOT_FOUND )
                     .build();
         }
     }

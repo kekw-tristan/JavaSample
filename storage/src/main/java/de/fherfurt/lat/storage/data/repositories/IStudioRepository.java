@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IStudioRepository {
     List<Studio> getAllStudios();
-
+    List<Studio> getStudiosByAddress (int addressId);
     Studio getStudio( int studioId );
     boolean createStudio( Studio studio );
     boolean updateStudio( Studio studio );

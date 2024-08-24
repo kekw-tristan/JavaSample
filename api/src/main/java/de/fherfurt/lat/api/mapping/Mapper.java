@@ -17,7 +17,7 @@ public class Mapper {
         );
     }
 
-    public static Object studioToDto(Studio studio) {
+    public static StudioDto studioToDto(Studio studio) {
         return new StudioDto(
                 studio.getId(),
                 studio.getPrizePerDay(),
