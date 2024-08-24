@@ -40,4 +40,16 @@ public class Mapper {
                 addressDto.getCountry()
         );
     }
+
+    public static Studio dtoToStudio(StudioDto studioDto) {
+        if (studioDto == null) {
+            return null;
+        }
+
+        // Use the factory method to create Address
+        return Studio.create(
+                studioDto.getPrizePerDay(),
+                studioDto.getAddress()
+        );
+    }
 }

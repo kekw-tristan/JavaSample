@@ -4,18 +4,19 @@ import de.fherfurt.lat.api.mapping.Mapper;
 import de.fherfurt.lat.api.models.StudioDto;
 import de.fherfurt.lat.api.services.StudioService;
 import de.fherfurt.lat.api.services.IStudioService;
+import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.Studio;
-import de.fherfurt.lat.api.models.NewStudioDto;
 
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 
 public class StudioResource {
+    private final IStudioService studioService;
+
     public StudioResource() { this.studioService = new StudioService(); }
 
     @GET
@@ -62,31 +63,25 @@ public class StudioResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createStudio(
-            NewStudioDto personToCreate
+            StudioDto studioDto
     ) {
-        Studio newStudio = null;
+        Studio studio = Mapper.dtoToStudio(studioDto);
 
-        try {
-            newStudio = Mapper.newPersonDtoToPerson(personToCreate, owner.get());
-        } catch (MappingException me) {
-            return Response
-                    .status(Response.Status.BAD_REQUEST)
-                    .entity(new ErrorDto(me.getMessage()))
-                    .build();
-        }
+        // Call service to create address
+        boolean isAdded = this.studioService.addStudio(studio);
 
-        boolean success = this.studioService.addStudio( newStudio );
-
-        if( success ) {
+        if(isAdded) {
             return Response
                     .status(Response.Status.CREATED)
-                    .entity(Mapper.studioToDto(newStudio))
                     .build();
         } else {
             return Response
-                    .status(Response.Status.BAD_REQUEST)
+                    .status(Response.Status.NOT_MODIFIED)
                     .build();
         }
+
+        // Return response with created address and a status code of 201 (Created)
+
     }
 
     @PUT
@@ -94,11 +89,12 @@ public class StudioResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateStudio(
-            NewStudioDto studioToUpdate,
             @PathParam("studioId") int studioId
     ) {
-        Studio studioUpdates = null;
 
+
+        /*
+        Studio studioUpdates = null;
         try {
             studioUpdates = Mapper.newPersonDtoToPerson(personToUpdate, owner.get());
         } catch (MappingException me) {
@@ -120,7 +116,7 @@ public class StudioResource {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .build();
-        }
+        }*/
     }
 
     @DELETE

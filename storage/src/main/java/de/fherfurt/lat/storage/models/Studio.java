@@ -23,6 +23,10 @@ public class Studio extends AbstractDatabaseEntity
         this.address = address;
     }
 
+    public static Studio create(double prizePerDay, Address address) {
+        return new Studio(prizePerDay, address);
+    }
+
     @Override
     public boolean equals(Object obj)
     {
