@@ -14,7 +14,7 @@
             <property name="hibernate.archive.autodetection" value="class" />
             <property name="hibernate.connection.driver_class" value="org.mariadb.jdbc.Driver" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect" />
-            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/javaprojekt" />
+            <property name="hibernate.connection.url" value="jdbc:mariadb://mariadb:3306/lat" />
             <property name="hibernate.connection.user" value="user" />
             <property name="hibernate.connection.password" value="password" />
             <property name="hibernate.flushMode" value="FLUSH_AUTO" />

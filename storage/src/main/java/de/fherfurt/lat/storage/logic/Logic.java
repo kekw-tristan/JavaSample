@@ -22,9 +22,9 @@ public class Logic
         EntityManager entityManager = factory.createEntityManager();
         JpaAddressDao addressDao = new JpaAddressDao(entityManager);
 
-        Address a = new Address(12, "41", "5", "2", "3");
-        Address b = new Address(14, "123", "45", "345", "234");
-        Address c = new Address(14, "123", "123", "123", "123");
+        Address a = new Address(12, "street 1", "54233", "Erfurt", "Germany");
+        Address b = new Address(14, "street 2", "45342", "Erfurt", "Germany");
+        Address c = new Address(14, "street 3", "12342", "Erfurt", "Germany");
 
         addressDao.create(a);
         addressDao.create(b);
@@ -53,8 +53,7 @@ public class Logic
 
         db = DatabaseConnection.getInstance();
 
-        if(!db.connectToDatabase(url, username, password))
-            System.out.println("Connection to Database failed!");
+        db.connectToDatabase(url, username, password);
 
     }
 }

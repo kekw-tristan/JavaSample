@@ -8,6 +8,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.crypto.Data;
 import java.net.URI;
 
 
@@ -54,7 +55,7 @@ public class WebApplication {
     public static void main(String[] args) {
         Logger LOG = LoggerFactory.getLogger( WebApplication.class );
         System.out.println( "test" );
-
+        DatabaseConnection db = DatabaseConnection.getInstance();
         if(ConnectDatabase())
         {
             System.out.println("Connected to the database");

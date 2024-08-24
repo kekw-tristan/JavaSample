@@ -9,8 +9,15 @@ services:
       MYSQL_DATABASE: lat
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    command: --bind-address=0.0.0.0
     ports:
     - "3306:3306"
+    healthcheck:
+        test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+        start_period: 10s
+        interval: 10s
+        timeout: 5s
+        retries: 3
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -35,4 +42,5 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mariadb
+      mariadb:
+          condition: service_healthy

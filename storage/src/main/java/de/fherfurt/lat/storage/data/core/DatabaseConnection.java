@@ -15,7 +15,8 @@ public class DatabaseConnection
     {
         try
         {
-            connection = DriverManager.getConnection(jdbcUrl, username, password);
+            //connection = DriverManager.getConnection(jdbcUrl, username, password);
+            connection = DriverManager.getConnection("jdbc:mariadb://mariadb:3306/lat", "user", "password");
             System.out.println("connected to Database");
             return true;
         }
