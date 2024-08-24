@@ -11,7 +11,7 @@ public class DatabaseConnection
     {
     }
 
-    public boolean connectToDatabase(String jdbcUrl, String username, String password)
+    public boolean connectToDatabase()
     {
         try
         {

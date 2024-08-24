@@ -3,6 +3,7 @@ package de.fherfurt.lat.api.mapping;
 import de.fherfurt.lat.api.models.AddressDto;
 import de.fherfurt.lat.api.models.StudioDto;
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.data.core.AbstractDatabaseEntity;
 import de.fherfurt.lat.storage.models.Studio;
 
 public class Mapper {
@@ -22,6 +23,21 @@ public class Mapper {
                 studio.getId(),
                 studio.getPrizePerDay(),
                 studio.getAddress()
+        );
+    }
+
+    public static Address dtoToAddress(AddressDto addressDto) {
+        if (addressDto == null) {
+            return null;
+        }
+
+        // Use the factory method to create Address
+        return Address.create(
+                addressDto.getHouseNumber(),
+                addressDto.getStreet(),
+                addressDto.getPostalCode(),
+                addressDto.getCity(),
+                addressDto.getCountry()
         );
     }
 }

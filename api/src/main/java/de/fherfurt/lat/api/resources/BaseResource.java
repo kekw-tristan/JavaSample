@@ -14,7 +14,7 @@ public class BaseResource {
     }
 
     @Path("/address")
-    public AddressResource getAddressRessource() {
+    public AddressResource getAddressResource() {
         return new AddressResource();
     }
 

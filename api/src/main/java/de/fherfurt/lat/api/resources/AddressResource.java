@@ -6,10 +6,9 @@ import de.fherfurt.lat.api.services.AddressService;
 import de.fherfurt.lat.api.services.IAddressService;
 import de.fherfurt.lat.storage.models.Address;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -53,6 +52,30 @@ public class AddressResource {
                     .status(Response.Status.NOT_FOUND)
                     .build();
         }
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createAddress(AddressDto addressDto,  @Context HttpHeaders headers) {
+
+        Address address = Mapper.dtoToAddress(addressDto);
+
+        // Call service to create address
+        boolean isAdded = this.addressService.addAddress(address);
+
+        if(isAdded) {
+            return Response
+                    .status(Response.Status.CREATED)
+                    .build();
+        } else {
+            return Response
+                    .status(Response.Status.NOT_MODIFIED)
+                    .build();
+        }
+
+        // Return response with created address and a status code of 201 (Created)
+
     }
 
 }
