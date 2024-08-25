@@ -1,9 +1,6 @@
 package de.fherfurt.lat.storage;
 
 import de.fherfurt.lat.storage.models.Address;
-import de.fherfurt.lat.storage.models.Studio;
-
-import java.time.LocalDate;
 
 public class Constants {
 

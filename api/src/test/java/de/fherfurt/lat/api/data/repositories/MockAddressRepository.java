@@ -2,6 +2,7 @@ package de.fherfurt.lat.api.data.repositories;
 
 import de.fherfurt.lat.storage.data.repositories.IAddressRepository;
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.Studio;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -22,7 +23,15 @@ public class MockAddressRepository implements IAddressRepository {
             "DE"
     );
 
-    public static final List<Address> addresses = List.of(firstAddress, secondAddress);
+    public static List<Address> addresses = new ArrayList<>();
+
+    private static void resetAddressesList() {
+        addresses = new ArrayList<>();
+        addresses.add(firstAddress);
+        addresses.add(secondAddress);
+    }
+
+    public MockAddressRepository() { resetAddressesList(); }
 
     @Override
     public List<Address> getAllAddresses() {
@@ -38,15 +47,19 @@ public class MockAddressRepository implements IAddressRepository {
     }
 
     @Override
-    public boolean createAddress(Address address) { return false;}
-
-    @Override
-    public boolean updateAddress(Address address) {
-        return false;
+    public boolean createAddress(Address address) {
+        addresses.add(address);
+        return true;
     }
 
     @Override
     public boolean deleteAddress(int addressId) {
-        return false;
+        Address foundAddress = getAddress(addressId);
+        if (foundAddress != null) {
+            addresses.remove(foundAddress);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

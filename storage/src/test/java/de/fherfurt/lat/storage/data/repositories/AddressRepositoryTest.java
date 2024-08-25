@@ -28,11 +28,6 @@ public class AddressRepositoryTest implements IAddressRepository {
         return addressDao.create(address);
     }
 
-    @Override
-    public boolean updateAddress(Address address) {
-        Address updatedAddress =  addressDao.update(address);
-        return updatedAddress.equals(address);
-    }
 
     @Override
     public boolean deleteAddress(int addressId) {

@@ -22,16 +22,9 @@ public class AddressRepository implements IAddressRepository {
         return addressDao.findById(addressId);
     }
 
-
     @Override
     public boolean createAddress(Address address) {
         return addressDao.create(address);
-    }
-
-    @Override
-    public boolean updateAddress(Address address) {
-        Address updatedAddress =  addressDao.update(address);
-        return updatedAddress.equals(address);
     }
 
     @Override

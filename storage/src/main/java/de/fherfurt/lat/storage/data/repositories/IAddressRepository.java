@@ -10,6 +10,5 @@ public interface IAddressRepository {
 
     Address getAddress( int addressId );
     boolean createAddress( Address address );
-    boolean updateAddress( Address address );
     boolean deleteAddress( int addressId );
 }

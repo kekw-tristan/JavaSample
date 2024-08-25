@@ -3,7 +3,6 @@ package de.fherfurt.lat.storage.data.core;
 import de.fherfurt.lat.storage.data.daos.IGenericDao;
 import de.fherfurt.lat.storage.data.daos.IStudioDao;
 import de.fherfurt.lat.storage.data.daos.JpaGenericDao;
-import de.fherfurt.lat.storage.data.daos.JpaStudioDao;
 import de.fherfurt.lat.storage.data.repositories.*;
 import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.CalendarEntry;
@@ -81,8 +80,11 @@ public class DataController {
         );
     }
 
-    public IStudioDao getStudioDao() {
-        return new JpaStudioDao( this.entityManagerFactory.createEntityManager());
+    public IGenericDao<Studio> getStudioDao() {
+        return new JpaGenericDao<>(
+                Studio.class,
+                this.entityManagerFactory.createEntityManager()
+        );
     }
 
 }
