@@ -1,6 +1,7 @@
 package de.fherfurt.lat.storage;
 
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.CalendarEntry;
 import de.fherfurt.lat.storage.models.Studio;
 
 public class Constants {
@@ -60,4 +61,29 @@ public class Constants {
                 SECOND_STUDIO_ADDRESS_ID
         );
     }
+
+    // First Calendar entry
+    public static final int FIRST_STUDIO_ID = 1;
+    public static final String FIRST_START_DATE = "2024-08-25";
+    public static final String FIRST_END_DATE = "2024-09-01";
+    public static final String FIRST_FIRSTNAME = "Hans";
+    public static final String FIRST_LASTNAME = "Peter";
+    public static final String FIRST_EMAIL = "hans@gmail.com";
+
+    public static final int SECOND_STUDIO_ID = 1;
+    public static final String SECOND_START_DATE = "2024-09-25";
+    public static final String SECOND_END_DATE = "2024-10-01";
+    public static final String SECOND_FIRSTNAME = "Petra";
+    public static final String SECOND_LASTNAME = "Müller";
+    public static final String SECOND_EMAIL = "petra@gmail.com";
+
+    public static CalendarEntry getFirstCalenderEntry() {
+        return CalendarEntry.create(FIRST_STUDIO_ID, FIRST_START_DATE, FIRST_END_DATE, FIRST_FIRSTNAME, FIRST_LASTNAME, FIRST_EMAIL);
+    }
+
+    public static CalendarEntry getSecondCalenderEntry() {
+        return CalendarEntry.create(SECOND_STUDIO_ID, SECOND_START_DATE, SECOND_END_DATE, SECOND_FIRSTNAME, SECOND_LASTNAME, SECOND_EMAIL);
+    }
 }
+
+
