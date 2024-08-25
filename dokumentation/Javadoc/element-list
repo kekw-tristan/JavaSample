@@ -1,0 +1,9 @@
+de.fherfurt.lat.api
+de.fherfurt.lat.api.mapping
+de.fherfurt.lat.api.models
+de.fherfurt.lat.api.resources
+de.fherfurt.lat.api.services
+de.fherfurt.lat.storage.data.core
+de.fherfurt.lat.storage.data.daos
+de.fherfurt.lat.storage.data.repositories
+de.fherfurt.lat.storage.models
