@@ -46,16 +46,16 @@ public class DataController {
         String runMode = System.getenv("RUN_MODE");
 
         // Prepare Entity Manager Factory
-        //if (runMode == null) {
+        if (runMode == null) {
             // Running on local machine, with db in compose
-            //this.entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTENCE_UNIT_DEV_NAME );
-        //} else if (runMode.equalsIgnoreCase("PRODUCTION")) {
+            this.entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTENCE_UNIT_DEV_NAME );
+        } else if (runMode.equalsIgnoreCase("PRODUCTION")) {
             // Running container, with db in compose
         this.entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTENCE_UNIT_NAME );
-        //} else {
+        } else {
             // Running tests
-        //    this.entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTENCE_UNIT_TEST_NAME );
-        //}
+            this.entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTENCE_UNIT_TEST_NAME );
+        }
 
         // Create Repository
         LOGGER.info( "Create RepositoryImpl" );
