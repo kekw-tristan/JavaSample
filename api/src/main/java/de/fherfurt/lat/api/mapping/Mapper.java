@@ -1,9 +1,10 @@
 package de.fherfurt.lat.api.mapping;
 
 import de.fherfurt.lat.api.models.AddressDto;
+import de.fherfurt.lat.api.models.CalendarEntryDto;
 import de.fherfurt.lat.api.models.StudioDto;
 import de.fherfurt.lat.storage.models.Address;
-import de.fherfurt.lat.storage.data.core.AbstractDatabaseEntity;
+import de.fherfurt.lat.storage.models.CalendarEntry;
 import de.fherfurt.lat.storage.models.Studio;
 
 public class Mapper {
@@ -52,4 +53,33 @@ public class Mapper {
                 studioDto.getAddress()
         );
     }
+
+    public static CalendarEntryDto calendarEntryToDto(CalendarEntry entry) {
+        return new CalendarEntryDto(
+                entry.getId(),
+                entry.getStudioId(),
+                entry.getStartDate(),
+                entry.getEndDate(),
+                entry.getFirstName(),
+                entry.getLastName(),
+                entry.getEmail()
+        );
+    }
+
+    public static CalendarEntry dtoToCalendarEntry(CalendarEntryDto entryDto) {
+        if (entryDto == null) {
+            return null;
+        }
+
+        // Use the factory method to create Address
+        return CalendarEntry.create(
+                entryDto.getStudioId(),
+                entryDto.getStartDate(),
+                entryDto.getEndDate(),
+                entryDto.getFirstName(),
+                entryDto.getLastName(),
+                entryDto.getEmail()
+        );
+    }
+
 }

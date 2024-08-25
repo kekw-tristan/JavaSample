@@ -4,11 +4,9 @@ import de.fherfurt.lat.storage.data.daos.IGenericDao;
 import de.fherfurt.lat.storage.data.daos.IStudioDao;
 import de.fherfurt.lat.storage.data.daos.JpaGenericDao;
 import de.fherfurt.lat.storage.data.daos.JpaStudioDao;
-import de.fherfurt.lat.storage.data.repositories.AddressRepository;
-import de.fherfurt.lat.storage.data.repositories.IAddressRepository;
-import de.fherfurt.lat.storage.data.repositories.StudioRepository;
-import de.fherfurt.lat.storage.data.repositories.IStudioRepository;
+import de.fherfurt.lat.storage.data.repositories.*;
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.CalendarEntry;
 import de.fherfurt.lat.storage.models.Studio;
 import lombok.Getter;
 
@@ -30,6 +28,9 @@ public class DataController {
 
     @Getter
     private final IStudioRepository studioRepository;
+
+    @Getter
+    private final ICalendarEntryRepository calendarEntryRepository;
 
     private static DataController INSTANCE;
 
@@ -61,6 +62,16 @@ public class DataController {
         LOGGER.info( "Create RepositoryImpl" );
         this.addressRepository = new AddressRepository( this.getAddressDao() );
         this.studioRepository = new StudioRepository( this.getStudioDao(), this.getAddressDao());
+        this.calendarEntryRepository = new CalendarEntryRepository(this.getCalendarEntryDao());
+
+    }
+
+    public IGenericDao<CalendarEntry> getCalendarEntryDao()
+    {
+        return new JpaGenericDao<>(
+                CalendarEntry.class,
+                this.entityManagerFactory.createEntityManager()
+        );
     }
 
     public IGenericDao<Address> getAddressDao() {

@@ -1,5 +1,7 @@
 package de.fherfurt.lat.api.resources;
 
+import de.fherfurt.lat.storage.data.repositories.CalendarEntryRepository;
+
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +19,9 @@ public class BaseResource {
     public AddressResource getAddressResource() {
         return new AddressResource();
     }
+
+    @Path("/calendar")
+    public CalendarResource getCalendarResource() { return new CalendarResource(); }
 
     @Path("/Studio")
     public StudioResource getStudioRessource() { return new StudioResource(); }
