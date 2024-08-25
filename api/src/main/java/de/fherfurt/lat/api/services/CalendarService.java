@@ -40,11 +40,11 @@ public class CalendarService implements ICalendarService {
 
     @Override
     public boolean addCalendarEntry(CalendarEntry calendarEntry) {
-        return false;
+        return calendarEntryRepository.createCalendarEntry(calendarEntry);
     }
 
     @Override
-    public boolean deleteCalendarEntry(int id) {
-        return false;
+    public boolean deleteCalendarEntry(CalendarEntry calendarEntry) {
+        return calendarEntryRepository.deleteCalendarEntry(calendarEntry);
     }
 }

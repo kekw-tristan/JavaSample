@@ -11,8 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 public class StudioRepository implements IStudioRepository{
-    private final IStudioDao studioDao;
-    private final IGenericDao<Address> addressDao;
+    private final IGenericDao<Studio> studioDao;
 
     @Override
     public List<Studio> getAllStudios() {
@@ -22,17 +21,6 @@ public class StudioRepository implements IStudioRepository{
     @Override
     public Studio getStudio( int studioId ) {
         return studioDao.findById(studioId);
-    }
-
-    @Override
-    public List<Studio> getStudiosByAddress (int addressId) {
-        Address address = addressDao.findById(addressId);
-
-        if (address == null) {
-            return new ArrayList<>();
-        }
-
-        return studioDao.findWithAddress(address);
     }
 
     @Override

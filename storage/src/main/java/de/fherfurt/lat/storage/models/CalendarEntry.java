@@ -18,17 +18,17 @@ public class CalendarEntry extends AbstractDatabaseEntity {
     private int studioId;
     private String startDate;
     private String endDate;
-    private String FirstName;
-    private String LastName;
-    private String Email;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     public CalendarEntry(int studioId, String startDate, String endDate, String FirstName, String LastName, String Email) {
         this.studioId = studioId;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Email = Email;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.email = Email;
     }
 
     public static CalendarEntry create(int studioId, String startDate, String endDate, String FirstName, String LastName, String Email)

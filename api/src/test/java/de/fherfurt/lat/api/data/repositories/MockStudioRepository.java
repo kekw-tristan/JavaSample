@@ -53,11 +53,6 @@ public class MockStudioRepository implements IStudioRepository {
     public List<Studio> getAllStudios() { return new ArrayList<>(studios); }
 
     @Override
-    public List<Studio> getStudiosByAddress(int addressId) {
-        return null;
-    };
-
-    @Override
     public Studio getStudio( int studioId ) {
         if (studioId < 0 || studioId >= studios.size()) {
             return null;

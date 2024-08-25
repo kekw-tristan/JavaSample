@@ -61,7 +61,7 @@ public class DataController {
         // Create Repository
         LOGGER.info( "Create RepositoryImpl" );
         this.addressRepository = new AddressRepository( this.getAddressDao() );
-        this.studioRepository = new StudioRepository( this.getStudioDao(), this.getAddressDao());
+        this.studioRepository = new StudioRepository( this.getStudioDao());
         this.calendarEntryRepository = new CalendarEntryRepository(this.getCalendarEntryDao());
 
     }
