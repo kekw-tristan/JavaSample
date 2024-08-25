@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StudioServiceTest {
     private IStudioRepository mockStudioRepository;
@@ -27,6 +28,55 @@ public class StudioServiceTest {
 
     @AfterEach
     void tearDown() {
+        mockStudioRepository = null;
+        studioService = null;
+    }
 
+    @Test
+    void testGetAllStudios() {
+        // Act
+        List<Studio> studios = studioService.getAllStudios();
+
+        // Assert
+        assertNotNull(studios);
+        assertEquals(2, studios.size());
+    }
+
+    @Test
+    void testGetStudioById() {
+        // Arrange
+        int validStudioId = 0;
+        int invalidStudioId = 5;
+
+        // Act
+        Optional<Studio> foundValidStudio = studioService.getStudioById(validStudioId);
+        Optional<Studio> foundInvalidStudio = studioService.getStudioById(invalidStudioId);
+
+        // Assert
+        assertTrue(foundValidStudio.isPresent());
+        assertEquals(MockStudioRepository.firstStudio, foundValidStudio.get());
+
+        assertFalse(foundInvalidStudio.isPresent());
+    }
+
+    @Test
+    void testAddStudio() {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    @Test
+    void testUpdateStudio() {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    @Test
+    void testDeleteStudio() {
+        // Arrange
+        // Act
+        // Assert
     }
 }

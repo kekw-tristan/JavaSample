@@ -23,6 +23,6 @@ public class BaseResource {
     @Path("/calendar")
     public CalendarResource getCalendarResource() { return new CalendarResource(); }
 
-    @Path("/Studio")
-    public StudioResource getStudioRessource() { return new StudioResource(); }
+    @Path("/studio")
+    public StudioResource getStudioResource() { return new StudioResource(); }
 }
