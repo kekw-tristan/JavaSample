@@ -26,12 +26,6 @@ public class CalendarService implements ICalendarService {
         return calendarEntryRepository.getCalendarEntries();
     }
 
-    // todo
-    @Override
-    public List<CalendarEntry> getCalendarEntriesOfMonth(int month) {
-        return List.of();
-    }
-
     @Override
     public Optional<CalendarEntry> getCalendarEntry(int id) {
         return Optional.ofNullable(calendarEntryRepository.getCalendarEntry(id));

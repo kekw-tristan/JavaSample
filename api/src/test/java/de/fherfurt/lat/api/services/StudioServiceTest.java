@@ -73,29 +73,6 @@ public class StudioServiceTest {
         assertEquals(studioAmountBefore + 1, MockStudioRepository.studios.size());
         assertTrue(MockStudioRepository.studios.contains(newStudio));
     }
-/*
-    @Test
-    void testUpdateStudio() {
-        // Arrange
-        // Arrange
-        Studio newStudio = getTestStudio();
-
-        int studioAmountBeforeAdding = MockStudioRepository.studios.size();
-        studioService.addStudio(newStudio);
-
-        int studioAmountBeforeUpdating = MockStudioRepository.studios.size();
-
-        // Act
-        boolean resultStudioUpdated = studioService.updateStudio(newStudio);
-
-        // Assert
-        assertTrue(resultStudioUpdated);
-
-        assertEquals(studioAmountBeforeAdding + 1, studioAmountBeforeUpdating);
-        assertEquals(studioAmountBeforeUpdating, MockStudioRepository.studios.size());
-
-        assertTrue(MockStudioRepository.studios.contains(newStudio));
-    }*/
 
     @Test
     void testDeleteStudio() {

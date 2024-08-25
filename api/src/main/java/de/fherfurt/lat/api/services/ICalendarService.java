@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface ICalendarService {
     List<CalendarEntry> getCalendarEntries();
-    List<CalendarEntry> getCalendarEntriesOfMonth(int month);
     Optional<CalendarEntry> getCalendarEntry(int id);
     boolean addCalendarEntry(CalendarEntry calendarEntry);
     boolean deleteCalendarEntry(CalendarEntry calendarEntry) ;
