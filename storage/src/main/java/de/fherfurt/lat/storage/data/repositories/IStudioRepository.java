@@ -8,6 +8,5 @@ public interface IStudioRepository {
     List<Studio> getAllStudios();
     Studio getStudio( int studioId );
     boolean createStudio( Studio studio );
-    boolean updateStudio( Studio studio );
     boolean deleteStudio( int studioId );
 }

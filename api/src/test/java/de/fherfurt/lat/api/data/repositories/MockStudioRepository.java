@@ -68,17 +68,6 @@ public class MockStudioRepository implements IStudioRepository {
     }
 
     @Override
-    public boolean updateStudio( Studio studio ) {
-        Studio foundStudio = getStudio(studio.getId());
-        if (foundStudio != null) {
-            studios.set(foundStudio.getId(), studio); // macht das sinn mit der id?
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
     public boolean deleteStudio( int studioId ) {
         Studio foundStudio = getStudio(studioId);
         if (foundStudio != null) {

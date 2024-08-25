@@ -53,9 +53,9 @@ public class StudioServiceTest {
 
         // Assert
         assertTrue(foundValidStudio.isPresent());
-        assertEquals(MockStudioRepository.firstStudio, foundValidStudio.get());
-
         assertFalse(foundInvalidStudio.isPresent());
+
+        assertEquals(MockStudioRepository.firstStudio, foundValidStudio.get());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class StudioServiceTest {
     @Test
     void testDeleteStudio() {
         // Arrange
-        int invalidPersonId = 5;
+        int invalidStudioId = 5;
 
         Studio newStudio = getTestStudio();
 
@@ -88,7 +88,7 @@ public class StudioServiceTest {
 
         // Act
         boolean resultStudioRemoved = studioService.deleteStudio(2);
-        boolean resultStudioNotRemoved = studioService.deleteStudio(invalidPersonId);
+        boolean resultStudioNotRemoved = studioService.deleteStudio(invalidStudioId);
 
         // Assert
         assertTrue(resultStudioRemoved);

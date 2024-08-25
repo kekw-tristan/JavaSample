@@ -9,6 +9,23 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MockCalendarEntryRepository implements ICalendarEntryRepository {
+    public static final CalendarEntry firstEntry = new CalendarEntry(
+            0,
+            "2024-08-25",
+            "2024-09-01",
+            "Hans",
+            "Peter",
+            "hans@gmail.com"
+    );
+
+    public static final CalendarEntry secondEntry = new CalendarEntry(
+            2,
+            "2024-09-25",
+            "2024-10-01",
+            "Petra",
+            "Müller",
+            "petra@gmail.com"
+    );
 
     public static List<CalendarEntry> entries = new ArrayList<>();
 
@@ -21,21 +38,32 @@ public class MockCalendarEntryRepository implements ICalendarEntryRepository {
     public MockCalendarEntryRepository() { resetStudiosList(); }
     @Override
     public List<CalendarEntry> getCalendarEntries() {
-        return new );
+        return new ArrayList<>(entries);
     }
 
     @Override
     public CalendarEntry getCalendarEntry(int id) {
-        return calendarEntryDao.findById(id);
+        if (id < 0 || id >= entries.size()) {
+            return null;
+        } else {
+            return entries.get(id);
+        }
     }
 
     @Override
     public boolean createCalendarEntry(CalendarEntry calendarEntry) {
-        return calendarEntryDao.create(calendarEntry);
+        entries.add(calendarEntry);
+        return true;
     }
 
     @Override
     public boolean deleteCalendarEntry(CalendarEntry calendarEntry) {
-        return calendarEntryDao.delete(calendarEntry);
+        CalendarEntry foundEntry = getCalendarEntry(calendarEntry.getId());
+        if (foundEntry != null) {
+            entries.remove(foundEntry.getId());
+            return true;
+        } else {
+            return false;
+        }
     }
 }

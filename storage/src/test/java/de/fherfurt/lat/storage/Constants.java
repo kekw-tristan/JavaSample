@@ -63,7 +63,7 @@ public class Constants {
     }
 
     // First Calendar entry
-    public static final int FIRST_STUDIO_ID = 1;
+    public static final int FIRST_STUDIO_ID = 0;
     public static final String FIRST_START_DATE = "2024-08-25";
     public static final String FIRST_END_DATE = "2024-09-01";
     public static final String FIRST_FIRSTNAME = "Hans";

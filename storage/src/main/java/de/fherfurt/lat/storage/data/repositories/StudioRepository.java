@@ -29,12 +29,6 @@ public class StudioRepository implements IStudioRepository{
     }
 
     @Override
-    public boolean updateStudio( Studio studio ) {
-        Studio updatedStudio = studioDao.update(studio);
-        return updatedStudio.equals(studio);
-    }
-
-    @Override
     public boolean deleteStudio( int studioId ) {
         return studioDao.delete(studioId);
     }
