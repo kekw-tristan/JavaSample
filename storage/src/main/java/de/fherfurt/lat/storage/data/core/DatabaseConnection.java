@@ -15,8 +15,25 @@ public class DatabaseConnection
     {
         try
         {
-            //connection = DriverManager.getConnection(jdbcUrl, username, password);
+
             connection = DriverManager.getConnection("jdbc:mariadb://mariadb:3306/lat", "user", "password");
+            System.out.println("connected to Database");
+            return true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean connectToDatabase(String url)
+    {
+        try
+        {
+
+            connection = DriverManager.getConnection(url, "user", "password");
             System.out.println("connected to Database");
             return true;
         }
@@ -41,6 +58,11 @@ public class DatabaseConnection
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Connection getConnection()
+    {
+        return connection;
     }
 
     public static DatabaseConnection getInstance()
