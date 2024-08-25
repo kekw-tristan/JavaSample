@@ -1,11 +1,9 @@
 package de.fherfurt.lat.api.resources;
 
 import de.fherfurt.lat.api.mapping.Mapper;
-import de.fherfurt.lat.api.models.AddressDto;
 import de.fherfurt.lat.api.models.CalendarEntryDto;
 import de.fherfurt.lat.api.services.CalendarService;
 import de.fherfurt.lat.api.services.ICalendarService;
-import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.CalendarEntry;
 
 import javax.ws.rs.*;

@@ -1,17 +1,14 @@
 package de.fherfurt.lat.api.services;
 
 import de.fherfurt.lat.api.data.repositories.MockAddressRepository;
-import de.fherfurt.lat.api.data.repositories.MockStudioRepository;
 import de.fherfurt.lat.storage.data.repositories.IAddressRepository;
 import de.fherfurt.lat.storage.models.Address;
 
-import de.fherfurt.lat.storage.models.Studio;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

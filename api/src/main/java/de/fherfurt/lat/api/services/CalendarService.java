@@ -37,7 +37,6 @@ public class CalendarService implements ICalendarService {
         return Optional.ofNullable(calendarEntryRepository.getCalendarEntry(id));
     }
 
-
     @Override
     public boolean addCalendarEntry(CalendarEntry calendarEntry) {
         return calendarEntryRepository.createCalendarEntry(calendarEntry);

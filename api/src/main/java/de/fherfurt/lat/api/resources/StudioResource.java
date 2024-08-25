@@ -4,7 +4,6 @@ import de.fherfurt.lat.api.mapping.Mapper;
 import de.fherfurt.lat.api.models.StudioDto;
 import de.fherfurt.lat.api.services.StudioService;
 import de.fherfurt.lat.api.services.IStudioService;
-import de.fherfurt.lat.storage.models.Address;
 import de.fherfurt.lat.storage.models.Studio;
 
 
@@ -71,40 +70,6 @@ public class StudioResource {
         // Return response with created address and a status code of 201 (Created)
 
     }
-
-    /*
-    @PUT
-    @Path("{studioId:\\d+}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateStudio(
-            @PathParam("studioId") int studioId
-    ) {
-
-        Studio studioUpdates = null;
-        try {
-            studioUpdates = Mapper.newPersonDtoToPerson(personToUpdate, owner.get());
-        } catch (MappingException me) {
-            return Response
-                    .status(Response.Status.BAD_REQUEST)
-                    .entity(me.getMessage())
-                    .build();
-        }
-
-        studioUpdates.setId(studioId);
-
-        boolean success = this.studioService.updateStudio( studioUpdates );
-
-        if( success ) {
-            return Response
-                    .ok(Mapper.studioToDto(studioUpdates))
-                    .build();
-        } else {
-            return Response
-                    .status(Response.Status.BAD_REQUEST)
-                    .build();
-        }
-    }*/
 
     @DELETE
     @Path("{studioId:\\d+}")

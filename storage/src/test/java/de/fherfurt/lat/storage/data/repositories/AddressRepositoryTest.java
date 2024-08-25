@@ -1,16 +1,25 @@
 package de.fherfurt.lat.storage.data.repositories;
 
-
-import de.fherfurt.lat.storage.data.daos.IGenericDao;
+import de.fherfurt.lat.storage.data.daos.JpaGenericDao;
 import de.fherfurt.lat.storage.models.Address;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import java.util.List;
 
-@AllArgsConstructor
-public class AddressRepositoryTest implements IAddressRepository {
-    private final IGenericDao<Address> addressDao;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AddressRepositoryTes {
+    private static EntityManagerFactory entityManagerFactory;
+    private final JpaGenericDao<Address> addressDao;
 
     @Override
     public List<Address> getAllAddresses() {
