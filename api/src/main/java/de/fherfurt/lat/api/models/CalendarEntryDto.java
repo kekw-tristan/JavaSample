@@ -19,7 +19,7 @@ public class CalendarEntryDto {
     private int studioId;
     private String startDate;
     private String endDate;
-    private String FirstName;
-    private String LastName;
-    private String Email;
+    private String firstName;
+    private String lastName;
+    private String email;
 }

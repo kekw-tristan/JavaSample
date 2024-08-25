@@ -10,5 +10,5 @@ public interface ICalendarService {
     List<CalendarEntry> getCalendarEntriesOfMonth(int month);
     Optional<CalendarEntry> getCalendarEntry(int id);
     boolean addCalendarEntry(CalendarEntry calendarEntry);
-    boolean deleteCalendarEntry(int id);
+    boolean deleteCalendarEntry(CalendarEntry calendarEntry) ;
 }
