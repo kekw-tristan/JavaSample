@@ -97,10 +97,10 @@ class AddressServiceTest {
 
         // Assert
         assertTrue(resultAddressRemoved);
+        assertFalse(resultAddressNotRemoved);
+
         assertEquals(addressAmountBeforeAdding + 1, addressAmountBeforeDeleting);
         assertEquals(addressAmountBeforeDeleting - 1, MockAddressRepository.addresses.size());
-
-        assertFalse(resultAddressNotRemoved);
     }
 
     private Address getTestAddress() {

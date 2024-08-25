@@ -9,9 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -63,7 +61,14 @@ public class AddressRepositoryTest {
 
     @Test
     void testGetAddress() {
+        Address Address = Constants.getFirstAddress();
+        boolean isAdded = addressDao.create(Address);
 
+        Address resultAddress = addressRepository.getAddress(Address.getId());
+
+        assertTrue(isAdded);
+
+        assertEquals(Address, resultAddress);
     }
 
     @Test
@@ -85,6 +90,18 @@ public class AddressRepositoryTest {
 
     @Test
     void testDeleteAddress() {
+        Address address = Constants.getFirstAddress();
 
+        int sizeBeforeAdding = addressRepository.getAllAddresses().size();
+        addressRepository.createAddress(address);
+
+        int sizeBeforeDeleting = addressRepository.getAllAddresses().size();
+
+        boolean resultIsDeleted = addressRepository.deleteAddress(address.getId());
+
+        assertTrue(resultIsDeleted);
+
+        assertEquals(sizeBeforeAdding + 1, sizeBeforeDeleting);
+        assertEquals(sizeBeforeDeleting - 1, addressRepository.getAllAddresses().size());
     }
 }
