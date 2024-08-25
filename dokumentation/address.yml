@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Address API
+  version: 1.0.0
+  description: API for managing addresses
+servers:
+  - url: /api/v1
+
+paths:
+  /addresses:
+    get:
+      summary: get all addresses
+      description: gives out a list of all existing addresses
+      responses:
+        '200':
+          description: Erfolgreiche Antwort mit einer Liste von AddressDTOs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddressDto'
+      tags:
+        - Address
+
+    post:
+      summary: create a new address
+      description: creates a new address based on passed data
+      requestBody:
+        description: AddressDTO Objekt, das die zu erstellende Adresse darstellt.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressDto'
+      responses:
+        '201':
+          description: Adresse erfolgreich erstellt
+        '304':
+          description: Adresse wurde nicht erstellt (Not Modified)
+      tags:
+        - Address
+
+  /addresses/{addressId}:
+    get:
+      summary: get an address by ID
+      description: returns a specific address based on ID
+      parameters:
+        - name: addressId
+          in: path
+          required: true
+          description: Die ID der Adresse, die abgerufen werden soll.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Erfolgreiche Antwort mit dem AddressDTO der angegebenen ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+        '404':
+          description: Adresse mit der angegebenen ID nicht gefunden
+      tags:
+        - Address
+
+components:
+  schemas:
+    AddressDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Die eindeutige ID der Adresse.
+        houseNumber:
+          type: integer
+          description: Die Hausnummer der Adresse.
+        street:
+          type: string
+          description: Die Straße der Adresse.
+        postalCode:
+          type: string
+          description: Die Postleitzahl der Adresse.
+        city:
+          type: string
+          description: Die Stadt der Adresse.
+        country:
+          type: string
+          description: Das Land der Adresse.
+      example:
+        id: 1
+        houseNumber: 123
+        street: Hauptstrasse
+        postalCode: 12345
+        city: Musterstadt
+        country: Deutschland
