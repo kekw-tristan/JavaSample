@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StudioServiceTest {
     private IStudioRepository mockStudioRepository;
@@ -62,21 +61,70 @@ public class StudioServiceTest {
     @Test
     void testAddStudio() {
         // Arrange
+        Studio newStudio = getTestStudio();
+
+        int studioAmountBefore = studioService.getAllStudios().size();
+
         // Act
+        boolean resultStudioAdded = studioService.addStudio(newStudio);
+
         // Assert
+        assertTrue(resultStudioAdded);
+        assertEquals(studioAmountBefore + 1, MockStudioRepository.studios.size());
+        assertTrue(MockStudioRepository.studios.contains(newStudio));
     }
 
     @Test
     void testUpdateStudio() {
         // Arrange
+        // Arrange
+        Studio newStudio = getTestStudio();
+
+        int studioAmountBeforeAdding = MockStudioRepository.studios.size();
+        studioService.addStudio(newStudio);
+
+        int studioAmountBeforeUpdating = MockStudioRepository.studios.size();
+
         // Act
+        boolean resultStudioUpdated = studioService.updateStudio(newStudio);
+
         // Assert
+        assertTrue(resultStudioUpdated);
+
+        assertEquals(studioAmountBeforeAdding + 1, studioAmountBeforeUpdating);
+        assertEquals(studioAmountBeforeUpdating, MockStudioRepository.studios.size());
+
+        assertTrue(MockStudioRepository.studios.contains(newStudio));
     }
 
     @Test
     void testDeleteStudio() {
         // Arrange
+        int invalidPersonId = 5;
+
+        Studio newStudio = getTestStudio();
+
+        int studioAmountBeforeAdding = MockStudioRepository.studios.size();
+        studioService.addStudio(newStudio);
+
+        int studioAmountBeforeDeleting = MockStudioRepository.studios.size();
+
         // Act
+        boolean resultStudioRemoved = studioService.deleteStudio(2);
+        boolean resultStudioNotRemoved = studioService.deleteStudio(invalidPersonId);
+
         // Assert
+        assertTrue(resultStudioRemoved);
+        assertEquals(studioAmountBeforeAdding + 1, studioAmountBeforeDeleting);
+        assertEquals(studioAmountBeforeDeleting - 1, MockStudioRepository.studios.size());
+
+        assertFalse(resultStudioNotRemoved);
+    }
+
+    private Studio getTestStudio() {
+        return new Studio(
+                120.30,
+                1
+        );
     }
 }

@@ -42,7 +42,7 @@ public class StudioRepository implements IStudioRepository{
 
     @Override
     public boolean updateStudio( Studio studio ) {
-        Studio updatedStudio =  studioDao.update(studio);
+        Studio updatedStudio = studioDao.update(studio);
         return updatedStudio.equals(studio);
     }
 
