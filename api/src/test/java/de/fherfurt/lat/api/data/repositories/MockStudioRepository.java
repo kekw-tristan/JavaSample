@@ -26,17 +26,17 @@ public class MockStudioRepository implements IStudioRepository {
 
     public static final Studio firstStudio = new Studio (
         98.25,
-        firstAddress
+        1
     );
 
     public static final Studio secondStudio = new Studio (
             135.89,
-            secondAddress
+            2
     );
 
     public static final Studio updatedFirstStudio = new Studio (
             110.00,
-            firstAddress
+            1
     );
 
     public static List<Studio> studios = new ArrayList<>();
@@ -54,7 +54,7 @@ public class MockStudioRepository implements IStudioRepository {
 
     @Override
     public List<Studio> getStudiosByAddress(int addressId) {
-
+        return null;
     };
 
     @Override

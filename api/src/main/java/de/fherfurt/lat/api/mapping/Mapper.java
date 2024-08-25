@@ -23,7 +23,7 @@ public class Mapper {
         return new StudioDto(
                 studio.getId(),
                 studio.getPrizePerDay(),
-                studio.getAddress()
+                studio.getAddressId()
         );
     }
 
@@ -50,7 +50,7 @@ public class Mapper {
         // Use the factory method to create Address
         return Studio.create(
                 studioDto.getPrizePerDay(),
-                studioDto.getAddress()
+                studioDto.getAddressId()
         );
     }
 

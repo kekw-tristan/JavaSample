@@ -16,5 +16,5 @@ import lombok.Setter;
 public class StudioDto {
     private int id;
     private double prizePerDay;
-    private Address address;
+    private int addressId;
 }

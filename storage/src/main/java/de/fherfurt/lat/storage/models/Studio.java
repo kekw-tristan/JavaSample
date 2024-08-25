@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.Objects;
 
 @Getter
@@ -14,17 +15,16 @@ import java.util.Objects;
 public class Studio extends AbstractDatabaseEntity
 {
     private double prizePerDay;
-    @ManyToOne
-    private Address address;
+    private int addressId;
 
-    public Studio(double prizePerDay, Address address)
+    public Studio(double prizePerDay, int addressId)
     {
         this.prizePerDay = prizePerDay;
-        this.address = address;
+        this.addressId = addressId;
     }
 
-    public static Studio create(double prizePerDay, Address address) {
-        return new Studio(prizePerDay, address);
+    public static Studio create(double prizePerDay, int addressId) {
+        return new Studio(prizePerDay, addressId);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class Studio extends AbstractDatabaseEntity
     {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        return Objects.equals(prizePerDay, ((Studio) obj).prizePerDay) && Objects.equals(address, ((Studio) obj).address);
+        return Objects.equals(prizePerDay, ((Studio) obj).prizePerDay) && Objects.equals(addressId, ((Studio) obj).addressId);
     }
 }
