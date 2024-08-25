@@ -34,11 +34,6 @@ public class StudioService implements IStudioService {
     }
 
     @Override
-    public List<Studio> getStudiosByAddress(Address address) {
-        return studioRepository.getStudiosByAddress(address.getId());
-    }
-
-    @Override
     public Optional<Studio> getStudioById(int studioId) {
         return Optional.ofNullable(studioRepository.getStudio(studioId));
     }
