@@ -29,11 +29,6 @@ public class StudioService implements IStudioService {
     }
 
     @Override
-    public List<Studio> getStudiosByAddress(int addressId) {
-        return studioRepository.getStudiosByAddress(addressId);
-    }
-
-    @Override
     public Optional<Studio> getStudioById(int studioId) {
         return Optional.ofNullable(studioRepository.getStudio(studioId));
     }
@@ -43,8 +38,6 @@ public class StudioService implements IStudioService {
         return studioRepository.createStudio(studio);
     }
 
-    @Override
-    public boolean updateStudio(Studio studio) { return studioRepository.updateStudio(studio); }
 
     @Override
     public boolean deleteStudio(int studioId) {

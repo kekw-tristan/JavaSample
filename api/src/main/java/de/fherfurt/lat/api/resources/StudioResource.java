@@ -46,18 +46,6 @@ public class StudioResource {
                 .toList();
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<StudioDto> getStudiosByAddress(int addressId) {
-        // Je nachdem wie addressId übergeben wird dann noch if statement das leere Liste wiedergibt
-        // wenn es kein addresse gibt mit der id oder so
-
-        return this.studioService
-                .getStudiosByAddress(addressId)
-                .stream()
-                .map(Mapper::studioToDto)
-                .toList();
-    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
