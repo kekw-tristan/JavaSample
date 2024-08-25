@@ -1,6 +1,7 @@
 package de.fherfurt.lat.storage;
 
 import de.fherfurt.lat.storage.models.Address;
+import de.fherfurt.lat.storage.models.Studio;
 
 public class Constants {
 
@@ -40,21 +41,23 @@ public class Constants {
 
     // First Studio
     public static final double FIRST_STUDIO_PRIZE_PER_DAY = 110.95;
-    public static final Address FIRST_STUDIO_ADDRESS = new Address(
-            FIRST_ADDRESS_HOUSENUMBER,
-            FIRST_ADDRESS_STREET,
-            FIRST_ADDRESS_POSTAL_CODE,
-            FIRST_ADDRESS_CITY,
-            FIRST_ADDRESS_COUNTRY
-    );
+    public static final int FIRST_STUDIO_ADDRESS_ID = 0;
+
+    public static Studio getFirstStudio() {
+        return new Studio(
+                FIRST_STUDIO_PRIZE_PER_DAY,
+                FIRST_STUDIO_ADDRESS_ID
+        );
+    }
 
     // Second Studio
     public static final double SECOND_STUDIO_PRIZE_PER_DAY = 120.10;
-    public static final Address SECOND_STUDIO_ADDRESS = new Address(
-            SECOND_ADDRESS_HOUSENUMBER,
-            SECOND_ADDRESS_STREET,
-            SECOND_ADDRESS_POSTAL_CODE,
-            SECOND_ADDRESS_CITY,
-            SECOND_ADDRESS_COUNTRY
-    );
+    public static final int SECOND_STUDIO_ADDRESS_ID = 1;
+
+    public static Studio getSecondStudio() {
+        return new Studio(
+                SECOND_STUDIO_PRIZE_PER_DAY,
+                SECOND_STUDIO_ADDRESS_ID
+        );
+    }
 }

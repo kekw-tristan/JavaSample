@@ -61,14 +61,14 @@ public class AddressRepositoryTest {
 
     @Test
     void testGetAddress() {
-        Address Address = Constants.getFirstAddress();
-        boolean isAdded = addressDao.create(Address);
+        Address address = Constants.getFirstAddress();
+        boolean isAdded = addressDao.create(address);
 
-        Address resultAddress = addressRepository.getAddress(Address.getId());
+        Address resultAddress = addressRepository.getAddress(address.getId());
 
         assertTrue(isAdded);
 
-        assertEquals(Address, resultAddress);
+        assertEquals(address, resultAddress);
     }
 
     @Test

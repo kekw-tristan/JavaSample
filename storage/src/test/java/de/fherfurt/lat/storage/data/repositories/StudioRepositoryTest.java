@@ -44,64 +44,64 @@ public class StudioRepositoryTest {
 
     @Test
     void testGetAllAddresses() {
-        Studio firstStudio = Constants;
-        Studio secondStudio = Constants;
-        boolean isFirstAdded = studioDao.create(firstAddress);
-        boolean isSecondAdded = addressDao.create(secondAddress);
+        Studio firstStudio = Constants.getFirstStudio();
+        Studio secondStudio = Constants.getSecondStudio();
+        boolean isFirstAdded = studioDao.create(firstStudio);
+        boolean isSecondAdded = studioDao.create(secondStudio);
 
-        List<Address> resultAddresses = addressRepository.getAllAddresses();
+        List<Studio> resultStudios = studioRepository.getAllStudios();
 
         assertTrue(isFirstAdded);
         assertTrue(isSecondAdded);
 
-        assertEquals(2, resultAddresses.size());
-        assertTrue(resultAddresses.contains(firstAddress));
-        assertTrue(resultAddresses.contains(secondAddress));
+        assertEquals(2, resultStudios.size());
+        assertTrue(resultStudios.contains(firstStudio));
+        assertTrue(resultStudios.contains(secondStudio));
     }
 
     @Test
     void testGetAddress() {
-        Address Address = Constants.getFirstAddress();
-        boolean isAdded = addressDao.create(Address);
+        Studio studio = Constants.getFirstStudio();
+        boolean isAdded = studioDao.create(studio);
 
-        Address resultAddress = addressRepository.getAddress(Address.getId());
+        Studio resultStudio = studioRepository.getStudio(studio.getId());
 
         assertTrue(isAdded);
 
-        assertEquals(Address, resultAddress);
+        assertEquals(studio, resultStudio);
     }
 
     @Test
     void testCreateAddress() {
-        Address address = Constants.getFirstAddress();
+        Studio studio = Constants.getFirstStudio();
 
-        int sizeBeforeAdding = addressRepository.getAllAddresses().size();
+        int sizeBeforeAdding = studioRepository.getAllStudios().size();
 
-        boolean resultIsAdded = addressRepository.createAddress(address);
+        boolean resultIsAdded = studioRepository.createStudio(studio);
 
-        List<Address> allAddedAddresses = addressRepository.getAllAddresses();
+        List<Studio> allAddedStudios = studioRepository.getAllStudios();
 
         assertEquals(0, sizeBeforeAdding);
         assertTrue(resultIsAdded);
 
-        assertEquals(1, allAddedAddresses.size());
-        assertTrue(allAddedAddresses.contains(address));
+        assertEquals(1, allAddedStudios.size());
+        assertTrue(allAddedStudios.contains(studio));
     }
 
     @Test
     void testDeleteAddress() {
-        Address address = Constants.getFirstAddress();
+        Studio studio = Constants.getFirstStudio();
 
-        int sizeBeforeAdding = addressRepository.getAllAddresses().size();
-        addressRepository.createAddress(address);
+        int sizeBeforeAdding = studioRepository.getAllStudios().size();
+        studioRepository.createStudio(studio);
 
-        int sizeBeforeDeleting = addressRepository.getAllAddresses().size();
+        int sizeBeforeDeleting = studioRepository.getAllStudios().size();
 
-        boolean resultIsDeleted = addressRepository.deleteAddress(address.getId());
+        boolean resultIsDeleted = studioRepository.deleteStudio(studio.getId());
 
         assertTrue(resultIsDeleted);
 
         assertEquals(sizeBeforeAdding + 1, sizeBeforeDeleting);
-        assertEquals(sizeBeforeDeleting - 1, addressRepository.getAllAddresses().size());
+        assertEquals(sizeBeforeDeleting - 1, studioRepository.getAllStudios().size());
     }
 }
