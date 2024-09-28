@@ -1,17 +1,10 @@
-# Projekt LAT
-
-## Mitglieder
-- Tristan Jung
-- Lara Schenk
-- Antonio Keßler
-
 ## How to Run
 
 To get started with the project, follow these steps:
 
-1. **Repository clonen**
+1. **clone repo**
 1. **docker compose up --build**
-1. **Tests können nur ohne Docker gestartet werden (Empfählung All in directory storage und api)**
+1. **hint: tests don't run in docker container**
 
 ## Examples JSON POST
 
